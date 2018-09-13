@@ -15,6 +15,7 @@
 		E3176D742149C967001AEDBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3176D722149C967001AEDBB /* LaunchScreen.storyboard */; };
 		E3176D7F2149C967001AEDBB /* AR_testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3176D7E2149C967001AEDBB /* AR_testTests.swift */; };
 		E3176D8A2149C967001AEDBB /* AR_testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3176D892149C967001AEDBB /* AR_testUITests.swift */; };
+		E3176D98214ABFB4001AEDBB /* SignPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3176D97214ABFB4001AEDBB /* SignPost.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		E3176D852149C967001AEDBB /* AR_testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AR_testUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3176D892149C967001AEDBB /* AR_testUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AR_testUITests.swift; sourceTree = "<group>"; };
 		E3176D8B2149C967001AEDBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3176D97214ABFB4001AEDBB /* SignPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignPost.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				E3176D672149C966001AEDBB /* AppDelegate.swift */,
 				E3176D692149C966001AEDBB /* art.scnassets */,
 				E3176D6B2149C966001AEDBB /* ViewController.swift */,
+				E3176D97214ABFB4001AEDBB /* SignPost.swift */,
 				E3176D6D2149C966001AEDBB /* Main.storyboard */,
 				E3176D702149C967001AEDBB /* Assets.xcassets */,
 				E3176D722149C967001AEDBB /* LaunchScreen.storyboard */,
@@ -262,6 +265,7 @@
 			files = (
 				E3176D6C2149C966001AEDBB /* ViewController.swift in Sources */,
 				E3176D682149C966001AEDBB /* AppDelegate.swift in Sources */,
+				E3176D98214ABFB4001AEDBB /* SignPost.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,11 +443,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3HXPCZ4FZM;
 				INFOPLIST_FILE = AR_test/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qn.AR-test";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qn.ToDo-list";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -457,11 +462,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3HXPCZ4FZM;
 				INFOPLIST_FILE = AR_test/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.qn.AR-test";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qn.ToDo-list";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
