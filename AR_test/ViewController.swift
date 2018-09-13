@@ -14,6 +14,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,33 +27,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a new scene
         let scene = SCNScene()
-        scene.rootNode.addChildNode(addText("HELLLLLLLLLO"))
-//        scene.rootNode.addChildNode(addPlane())
+        let sign1 = SignPost("heyyyy")
+        sign1.position = SCNVector3(0,-0.3,-0.2)
+        let sign2 = SignPost("hooooooo")
+        sign2.position = SCNVector3(0,0,-0.3)
+        scene.rootNode.addChildNode(sign1)
+        scene.rootNode.addChildNode(sign2)
         // Set the scene to the view
         sceneView.scene = scene
     }
     
-    func addText(_ string: String) -> SCNNode {
-        let text = SCNText(string: string, extrusionDepth: 0.1)
-        text.font = UIFont.systemFont(ofSize: 1.0)
-        text.flatness = 0.01
-        text.firstMaterial?.diffuse.contents = UIColor.white
-        
-        let textNode = SCNNode(geometry: text)
-        
-        let fontSize = Float(0.04)
-        textNode.scale = SCNVector3(fontSize, fontSize, fontSize)
-        textNode.position = SCNVector3(0,0,-0.3)
-        
-        return textNode
-    }
     
-    func addPlane() -> SCNNode {
-        let newNode = SCNNode()
-        let plane = SCNPlane(width:0.1, height:0.1)
-        newNode.geometry = plane
-        newNode.position = SCNVector3(0,0,-0.3)
-        return newNode
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
+        
     }
     
     
