@@ -111,6 +111,24 @@ class ClueNodeModel {
             task.resume()
         }
     }
+    
+    static func markClueAsStartingPoint(clueID: String) {
+        if let urlToReq = URL(string: "http://192.168.1.132:8000/cluenode/mark"){
+            var request = URLRequest(url: urlToReq)
+            // Set the method to POST
+            request.httpMethod = "POST"
+            // Create some bodyData and attach it to the HTTPBody
+            var bodyData = "unique_id=\(clueID)"
+            request.httpBody = bodyData.data(using: .utf8)
+            // Create the session
+            let session = URLSession.shared
+            let task = session.dataTask(with: request as URLRequest, completionHandler: {_,_,_ in })
+            task.resume()
+        }
+        
+    }
+
 }
+
 
 

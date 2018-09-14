@@ -27,10 +27,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             if let mapVC = tabBarController.mapViewController {
                 mapVC.scanForClues()
             }
-            
         }
-        
-        
         
         updateClueFoundLabel()
         // Set the view's delegate
@@ -61,21 +58,45 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     
     @IBAction func refreshButtonPressed(_ sender: UIButton) {
+        resetARSession()
+        currClueIndex = 0
+        updateClueFoundLabel()
         if let tabBarController = self.tabBarController as? TabBarController {
             if let mapVC = tabBarController.mapViewController {
                 mapVC.scanForClues()
             }
         }
-    }
-    
-    @IBAction func nextClueButtonPressed(_ sender: UIButton) {
-        if currClueIndex >= clues.count - 1 {
-            currClueIndex = 0
-        } else {
-            currClueIndex += 1
+        if !clues.isEmpty {
+            displayClue(clues[currClueIndex])
         }
     }
     
+    @IBAction func nextClueButtonPressed(_ sender: UIButton) {
+        if !clues.isEmpty {
+            currClueIndex += 1
+            if currClueIndex > clues.count - 1 {
+                currClueIndex = 0
+            }
+            updateClueFoundLabel()
+            displayClue(clues[currClueIndex])
+        }
+    }
+    
+    @IBAction func markButtonPressed(_ sender: UIButton) {
+        if !clues.isEmpty {
+            ClueNodeModel.markClueAsStartingPoint(clueID: clues[currClueIndex].uniqueID)
+        }
+        resetARSession()
+        currClueIndex = 0
+        if let tabBarController = self.tabBarController as? TabBarController {
+            if let mapVC = tabBarController.mapViewController {
+                mapVC.scanForClues()
+            }
+        }
+        updateClueFoundLabel()
+        displayClue(clues[currClueIndex])
+
+    }
     
     
     func didFindNewClues(_ clues: [Clue]) {
@@ -93,12 +114,37 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
+    func displayClue(_ clue: Clue) {
+        let scene = SCNScene()
+        let sign1 = SignPost(title: clue.title,
+                             uniqueID: clue.uniqueID,
+                             text: clue.text)
+        sign1.position = SCNVector3(0,0,-0.3)
+        scene.rootNode.addChildNode(sign1)
+        // Set the scene to the view
+        sceneView.scene = scene
+    }
+    
     func updateClueFoundLabel() {
         if clues.count == 0 {
             cluesFoundLabel.text = "Viewing clue: \(currClueIndex)/\(clues.count)"
         } else {
             cluesFoundLabel.text = "Viewing clue: \(currClueIndex + 1)/\(clues.count)"
         }
+    }
+    
+    func resetARSession() {
+
+        sceneView.session.pause()
+        sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
+            node.removeFromParentNode() }
+        setupARSession()
+    }
+    
+    func setupARSession() {
+        
+        let configuration = ARWorldTrackingConfiguration()
+        sceneView.session.run(configuration, options: [ARSession.RunOptions.resetTracking, ARSession.RunOptions.removeExistingAnchors])
         
     }
     

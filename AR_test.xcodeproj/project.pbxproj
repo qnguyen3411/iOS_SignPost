@@ -22,6 +22,7 @@
 		E3176DA0214B340B001AEDBB /* TreasureHuntModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3176D9F214B340B001AEDBB /* TreasureHuntModel.swift */; };
 		E3176DA2214B3F4B001AEDBB /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3176DA1214B3F4B001AEDBB /* TabBarController.swift */; };
 		E3176DA4214C06A2001AEDBB /* Clue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3176DA3214C06A2001AEDBB /* Clue.swift */; };
+		E326ABBB214C3BC10030FC6A /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E326ABBA214C3BC10030FC6A /* Errors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		E3176D9F214B340B001AEDBB /* TreasureHuntModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasureHuntModel.swift; sourceTree = "<group>"; };
 		E3176DA1214B3F4B001AEDBB /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E3176DA3214C06A2001AEDBB /* Clue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clue.swift; sourceTree = "<group>"; };
+		E326ABBA214C3BC10030FC6A /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				E3176DA1214B3F4B001AEDBB /* TabBarController.swift */,
+				E326ABBA214C3BC10030FC6A /* Errors.swift */,
 				E3176D6B2149C966001AEDBB /* ARViewController.swift */,
 				E3176D9B214B28BD001AEDBB /* NewClueViewController.swift */,
 				E3176D9D214B31A5001AEDBB /* NewTreasureHuntViewController.swift */,
@@ -287,6 +290,7 @@
 				E3176D682149C966001AEDBB /* AppDelegate.swift in Sources */,
 				E3176D9E214B31A5001AEDBB /* NewTreasureHuntViewController.swift in Sources */,
 				E3176D98214ABFB4001AEDBB /* SignPost.swift in Sources */,
+				E326ABBB214C3BC10030FC6A /* Errors.swift in Sources */,
 				E3176D9A214B16D7001AEDBB /* MapViewController.swift in Sources */,
 				E3176DA4214C06A2001AEDBB /* Clue.swift in Sources */,
 				E3176DA0214B340B001AEDBB /* TreasureHuntModel.swift in Sources */,

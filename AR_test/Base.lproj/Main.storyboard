@@ -59,7 +59,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="t0U-DF-Gqh">
-                                <rect key="frame" x="16" y="36" width="343" height="299.5"/>
+                                <rect key="frame" x="16" y="36" width="343" height="307.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New clue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFq-tg-gog">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
@@ -116,11 +116,18 @@
                                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
+                                                    <action selector="submitButtonPressed:" destination="PvS-Fe-Jqo" eventType="touchUpInside" id="n0I-Fi-YEg"/>
                                                     <action selector="submitButtonPressed:" destination="C5P-7R-MDa" eventType="touchUpInside" id="qOZ-e5-TYF"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FpW-gW-l6o">
+                                        <rect key="frame" x="0.0" y="307.5" width="343" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -133,6 +140,12 @@
                         <viewLayoutGuide key="safeArea" id="AL2-N3-jsR"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="New Clue" id="UDX-0v-Qb2"/>
+                    <connections>
+                        <outlet property="feedBackLabel" destination="FpW-gW-l6o" id="Bl8-ew-s8x"/>
+                        <outlet property="prevIDField" destination="qIL-Aw-6Os" id="6LM-Wn-sHE"/>
+                        <outlet property="textField" destination="1EO-tm-PzA" id="xtb-9v-kda"/>
+                        <outlet property="titleField" destination="3ie-yu-BE2" id="lF8-A8-YAy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N0a-gd-DXK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -183,9 +196,23 @@
                                     <action selector="nextClueButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="mqx-OJ-msF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmy-gW-KZc">
+                                <rect key="frame" x="16" y="108" width="160" height="30"/>
+                                <color key="backgroundColor" red="0.28507529149999999" green="0.25838836269999998" blue="0.0" alpha="0.31901958629999999" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="1qy-O8-5Vj"/>
+                                </constraints>
+                                <state key="normal" title="Mark as starting point">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="markButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="gkW-OJ-wHf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="cmy-gW-KZc" firstAttribute="top" secondItem="xYO-ot-fM5" secondAttribute="bottom" constant="11" id="54s-bP-roW"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" id="GsS-dJ-CKf"/>
                             <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="Z6k-CL-S9S" secondAttribute="trailing" constant="10" id="Kyc-ao-FNP"/>
                             <constraint firstItem="xYO-ot-fM5" firstAttribute="top" secondItem="xsW-dL-HxA" secondAttribute="bottom" constant="10.5" id="QTY-D7-Z5q"/>
@@ -196,6 +223,7 @@
                             <constraint firstItem="xsW-dL-HxA" firstAttribute="top" secondItem="fQZ-KI-GVf" secondAttribute="top" constant="16" id="i9L-n8-r2F"/>
                             <constraint firstItem="BrB-h1-WRS" firstAttribute="top" secondItem="U0K-SW-4ec" secondAttribute="top" id="rJc-2c-zQA"/>
                             <constraint firstItem="xsW-dL-HxA" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="16" id="ui1-8g-Zf7"/>
+                            <constraint firstItem="cmy-gW-KZc" firstAttribute="leading" secondItem="fQZ-KI-GVf" secondAttribute="leading" constant="16" id="waQ-J1-oGD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                     </view>
@@ -215,6 +243,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ZZQ-CH-8hT" customClass="TabBarController" customModule="AR_test" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3cF-KI-PbU">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -238,7 +267,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9Cu-06-cgq">
-                                <rect key="frame" x="16" y="36" width="343" height="278.5"/>
+                                <rect key="frame" x="16" y="36" width="343" height="263"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Treasure Hunt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIl-td-jQb">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
@@ -288,8 +317,8 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New treasure hunt created.  Look at scan tab for the first clue!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0HN-fL-Dcp">
-                                        <rect key="frame" x="0.0" y="247" width="343" height="31.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0HN-fL-Dcp">
+                                        <rect key="frame" x="0.0" y="247" width="343" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -307,6 +336,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="New treasure hunt" id="dts-Bm-9Jm"/>
                     <connections>
+                        <outlet property="feedBackLabel" destination="0HN-fL-Dcp" id="CO6-fH-WyV"/>
                         <outlet property="textField" destination="ixR-Qx-rZD" id="0Ma-jC-wOS"/>
                         <outlet property="titleField" destination="z4H-Eq-rWg" id="9dq-fa-mkF"/>
                     </connections>
