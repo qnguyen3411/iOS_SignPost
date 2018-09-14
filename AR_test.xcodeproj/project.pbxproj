@@ -17,6 +17,9 @@
 		E3176D8A2149C967001AEDBB /* AR_testUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3176D892149C967001AEDBB /* AR_testUITests.swift */; };
 		E3176D98214ABFB4001AEDBB /* SignPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3176D97214ABFB4001AEDBB /* SignPost.swift */; };
 		E3176D9A214B16D7001AEDBB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3176D99214B16D7001AEDBB /* MapViewController.swift */; };
+		E3176D9C214B28BD001AEDBB /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3176D9B214B28BD001AEDBB /* FormViewController.swift */; };
+		E3176D9E214B31A5001AEDBB /* NewTreasureHuntViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3176D9D214B31A5001AEDBB /* NewTreasureHuntViewController.swift */; };
+		E3176DA0214B340B001AEDBB /* TreasureHuntModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3176D9F214B340B001AEDBB /* TreasureHuntModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		E3176D8B2149C967001AEDBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3176D97214ABFB4001AEDBB /* SignPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignPost.swift; sourceTree = "<group>"; };
 		E3176D99214B16D7001AEDBB /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		E3176D9B214B28BD001AEDBB /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
+		E3176D9D214B31A5001AEDBB /* NewTreasureHuntViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTreasureHuntViewController.swift; sourceTree = "<group>"; };
+		E3176D9F214B340B001AEDBB /* TreasureHuntModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasureHuntModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,12 +109,15 @@
 		E3176D662149C966001AEDBB /* AR_test */ = {
 			isa = PBXGroup;
 			children = (
-				E3176D672149C966001AEDBB /* AppDelegate.swift */,
-				E3176D692149C966001AEDBB /* art.scnassets */,
 				E3176D6B2149C966001AEDBB /* ViewController.swift */,
+				E3176D9B214B28BD001AEDBB /* FormViewController.swift */,
 				E3176D99214B16D7001AEDBB /* MapViewController.swift */,
+				E3176D692149C966001AEDBB /* art.scnassets */,
 				E3176D97214ABFB4001AEDBB /* SignPost.swift */,
+				E3176D672149C966001AEDBB /* AppDelegate.swift */,
 				E3176D6D2149C966001AEDBB /* Main.storyboard */,
+				E3176D9F214B340B001AEDBB /* TreasureHuntModel.swift */,
+				E3176D9D214B31A5001AEDBB /* NewTreasureHuntViewController.swift */,
 				E3176D702149C967001AEDBB /* Assets.xcassets */,
 				E3176D722149C967001AEDBB /* LaunchScreen.storyboard */,
 				E3176D752149C967001AEDBB /* Info.plist */,
@@ -266,10 +275,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3176D9C214B28BD001AEDBB /* FormViewController.swift in Sources */,
 				E3176D6C2149C966001AEDBB /* ViewController.swift in Sources */,
 				E3176D682149C966001AEDBB /* AppDelegate.swift in Sources */,
+				E3176D9E214B31A5001AEDBB /* NewTreasureHuntViewController.swift in Sources */,
 				E3176D98214ABFB4001AEDBB /* SignPost.swift in Sources */,
 				E3176D9A214B16D7001AEDBB /* MapViewController.swift in Sources */,
+				E3176DA0214B340B001AEDBB /* TreasureHuntModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

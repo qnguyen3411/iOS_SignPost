@@ -15,7 +15,7 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
-    let regionRadius: CLLocationDistance = 1000
+    let regionRadius: CLLocationDistance = 1
     
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
@@ -41,10 +41,45 @@ class MapViewController: UIViewController {
         }
 
     }
+    
+    @IBAction func findTreasureHuntButtonPressed(_ sender: UIButton) {
+//        performSegue(withIdentifier: "NewFormSegue", sender: )
+    }
+    
+    @IBAction func newTreasureHuntButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "NewFormSegue", sender: sender)
+    }
+    
+    @IBAction func newNodeButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "NewFormSegue", sender: sender)
+    }
+    
+    @IBAction func findNodeButtonPressed(_ sender: UIButton) {
+    }
+    
+    
+    
 }
+
 extension MapViewController:CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("OK")
+        let userLocation:CLLocation = locations[0] as CLLocation
+        
+        // Call stopUpdatingLocation() to stop listening for location updates,
+        // other wise this function will be called every time when user location changes.
+        //manager.stopUpdatingLocation()
+        
+        let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        mapView.setRegion(region, animated: true)
+        
+        // Drop a pin at user's Current Location
+        let myAnnotation: MKPointAnnotation = MKPointAnnotation()
+        myAnnotation.coordinate = CLLocationCoordinate2DMake(userLocation.coordinate.latitude,
+                                                             userLocation.coordinate.longitude);
+        myAnnotation.title = "Current location"
+        mapView.addAnnotation(myAnnotation)
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("ERROR")
