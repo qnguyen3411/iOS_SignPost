@@ -12,14 +12,10 @@ class NewClueViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if let tabBarController = self.tabBarController as? TabBarController {
+            tabBarController.newClueViewController = self
+        }
         // Do any additional setup after loading the view.
-    }
-    
-    @IBAction func findTreasureHuntButtonPressed(_ sender: UIButton) {
-    }
-    
-    @IBAction func newTreasureHuntButtonPressed(_ sender: Any) {
     }
     
     

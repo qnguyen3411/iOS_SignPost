@@ -28,6 +28,11 @@ class MapViewController: UIViewController {
         print("MAPVIEW LOADED")
         super.viewDidLoad()
         
+        if let tabBarController = self.tabBarController as? TabBarController {
+            tabBarController.mapViewController = self
+        }
+        
+        
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         // 3
@@ -38,25 +43,10 @@ class MapViewController: UIViewController {
         }
         if let userLocation = locationManager.location {
             centerMapOnLocation(location: userLocation)
+            print("MYLOCATION: \(userLocation)")
         }
 
     }
-    
-    @IBAction func findTreasureHuntButtonPressed(_ sender: UIButton) {
-//        performSegue(withIdentifier: "NewFormSegue", sender: )
-    }
-    
-    @IBAction func newTreasureHuntButtonPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "NewFormSegue", sender: sender)
-    }
-    
-    @IBAction func newNodeButtonPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "NewFormSegue", sender: sender)
-    }
-    
-    @IBAction func findNodeButtonPressed(_ sender: UIButton) {
-    }
-    
     
     
 }
@@ -83,5 +73,51 @@ extension MapViewController:CLLocationManagerDelegate {
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("ERROR")
+    }
+}
+
+extension MapViewController {
+    func addNewTreasureHunt(withTitle title: String, text: String) {
+        print("TITLE: \(title), TEXT: \(text)")
+        if let userLocation = locationManager.location {
+            TreasureHuntModel.newTreasureHuntAtLocation(userLocation, title: title, text: text) {
+                data, response, error in
+                print("Cool")
+            }
+            print("MYLOCATION: \(userLocation)")
+        }
+    }
+    
+    func scanForClues() {
+        if let userLocation = locationManager.location {
+            ClueNodeModel.getClueNodesNearLocation(userLocation) {
+                data, response, error in
+                
+                do {
+                    if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
+                        guard let clues = jsonResult["clues"] as? NSArray else { return }
+                        var clueObjArr:[Clue] = []
+                        for clue in clues {
+                            guard let clue = clue as? NSDictionary else { continue }
+                            let clueObj = Clue(title: clue.value(forKey: "title") as! String,
+                                               uniqueID: clue.value(forKey: "unique_id") as! String,
+                                               text: clue.value(forKey: "text") as! String)
+                            clueObjArr.append(clueObj)
+                        }
+                        
+                        DispatchQueue.main.async {
+                            if let tabBarController = self.tabBarController as? TabBarController {
+                                if let ARVC = tabBarController.arViewController {
+                                    ARVC.didFindNewClues(clueObjArr)
+                                }
+                            }
+                        }
+                    }
+                } catch {
+                    print("ERROR")
+                }
+            }
+            print("MYLOCATION: \(userLocation)")
+        }
     }
 }

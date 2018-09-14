@@ -8,29 +8,39 @@
 
 import UIKit
 
-class NewTreasureHuntViewController: UIViewController {
 
+class NewTreasureHuntViewController: UIViewController {
+    
+    
     @IBOutlet weak var titleField: UITextField!
     
     @IBOutlet weak var textField: UITextView!
     
-    @IBOutlet weak var submitButtonPressed: UIButton!
+    @IBAction func submitButtonPressed(_ sender: UIButton) {
+        if let title = titleField.text, let text = textField.text {
+            if let tabBarController = self.tabBarController as? TabBarController {
+                if let mapVC = tabBarController.mapViewController {
+                    mapVC.addNewTreasureHunt(withTitle: title, text: text)
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if let tabBarController = self.tabBarController as? TabBarController {
+            tabBarController.newTreasureHuntController = self
+        }
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+//        view.addGestureRecognizer(tap)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, with: event)
     }
-    */
+//    func dismissKeyboard() {
+//        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+//        view.endEditing(true)
+//    }
 
 }

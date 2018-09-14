@@ -29,19 +29,18 @@ extension String {
             }
         }
         
-        return formattedString + String(repeating: "\n", count: numEmptyLines)
+        return formattedString
     }
 }
 
 class SignPost: SCNNode {
-//    var frame[String:SCNNode] = [:]
     var text = ""
     private let positioningNode = SCNNode()
     
-    init(_ string: String) {
+    init(title:String, uniqueID:String, text: String) {
         
         super.init()
-        let text = SCNText(string: string.formatted(), extrusionDepth: 0.1)
+        let text = SCNText(string:"title: \(title)\nUnique ID: \(uniqueID)\n\n\(text.formatted())", extrusionDepth: 0.1)
         text.font = UIFont.systemFont(ofSize: 1.0)
         text.flatness = 0.01
         text.firstMaterial?.diffuse.contents = UIColor.green
@@ -51,9 +50,9 @@ class SignPost: SCNNode {
         self.scale = SCNVector3(fontSize, fontSize, fontSize)
         self.position = SCNVector3(0,0,-0.3)
         
-        let frame = addFrame()
-        frame.position = SCNVector3(0,0,0)
-        self.addChildNode(frame)
+//        let frame = addFrame()
+//        frame.position = SCNVector3(0,0,0)
+//        self.addChildNode(frame)
         
     }
     
@@ -61,23 +60,7 @@ class SignPost: SCNNode {
         super.init()
         print("ERROR")
     }
-    
-//    func addText(_ string: String) -> SCNNode {
-//        let text = SCNText(string: string, extrusionDepth: 0.1)
-//        text.font = UIFont.systemFont(ofSize: 1.0)
-//        text.flatness = 0.01
-//        text.isWrapped = true
-//        text.firstMaterial?.diffuse.contents = UIColor.white
-//
-//        let textNode = SCNNode(geometry: text)
-//
-//        let fontSize = Float(0.04)
-//        textNode.scale = SCNVector3(fontSize, fontSize, fontSize)
-//        textNode.position = SCNVector3(0,0,-0)
-//
-//        return textNode
-//    }
-//
+
     
     func addFrame() -> SCNNode {
         let frame = SCNNode()

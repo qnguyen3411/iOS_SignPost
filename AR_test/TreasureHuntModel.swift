@@ -11,6 +11,7 @@ import MapKit
 
 
 class TreasureHuntModel {
+    
     static func getTreasureHuntsNearLocation(
         _ location: CLLocation,
         completionHandler: @escaping(
@@ -18,13 +19,40 @@ class TreasureHuntModel {
             _ response: URLResponse?,
             _ error: Error?) -> Void) {
         
-        if let urlToReq = URL(string: "http://localhost:8000/tasks") {
+        if let urlToReq = URL(string: "http://192.168.1.132:8000/treasurehunt") {
             // Create an NSMutableURLRequest using the url. This Mutable Request will allow us to modify the headers.
             var request = URLRequest(url: urlToReq)
             // Set the method to POST
             request.httpMethod = "POST"
             // Create some bodyData and attach it to the HTTPBody
             let bodyData = "latitude=\(location.coordinate.latitude)&longitude=\(location.coordinate.longitude)"
+            request.httpBody = bodyData.data(using: .utf8)
+            // Create the session
+            let session = URLSession.shared
+            let task = session.dataTask(with: request as URLRequest, completionHandler: completionHandler)
+            task.resume()
+        }
+    }
+    
+    static func newTreasureHuntAtLocation(
+        _ location: CLLocation,
+        title: String,
+        text: String,
+        completionHandler: @escaping(
+        _ data: Data?,
+        _ response: URLResponse?,
+        _ error: Error?) -> Void) {
+        
+        if let urlToReq = URL(string: "http://192.168.1.132:8000/treasurehunt/add") {
+            // Create an NSMutableURLRequest using the url. This Mutable Request will allow us to modify the headers.
+            var request = URLRequest(url: urlToReq)
+            // Set the method to POST
+            request.httpMethod = "POST"
+            // Create some bodyData and attach it to the HTTPBody
+            var bodyData = "latitude=\(location.coordinate.latitude)"
+            bodyData += "&longitude=\(location.coordinate.longitude)"
+            bodyData += "&title=\(title)&text=\(text)"
+            print("BODYDATA: \(bodyData)")
             request.httpBody = bodyData.data(using: .utf8)
             // Create the session
             let session = URLSession.shared
@@ -42,7 +70,7 @@ class ClueNodeModel {
             _ response: URLResponse?,
             _ error: Error?) -> Void) {
         
-        if let urlToReq = URL(string: "http://localhost:8000/tasks") {
+        if let urlToReq = URL(string: "http://192.168.1.132:8000/cluenode") {
             // Create an NSMutableURLRequest using the url. This Mutable Request will allow us to modify the headers.
             var request = URLRequest(url: urlToReq)
             // Set the method to POST
@@ -67,7 +95,7 @@ class ClueNodeModel {
             _ response: URLResponse?,
             _ error: Error?) -> Void) {
         
-        if let urlToReq = URL(string: "http://localhost:8000/tasks") {
+        if let urlToReq = URL(string: "http://192.168.1.132:8000/cluenode/add") {
             // Create an NSMutableURLRequest using the url. This Mutable Request will allow us to modify the headers.
             var request = URLRequest(url: urlToReq)
             // Set the method to POST
